@@ -36,10 +36,16 @@ void AFlyingBase::Tick(float DeltaTime)
 	{
 		return;
 	}
+	Orbit(DeltaTime);
+}
+
+void AFlyingBase::InitializePositioning()
+{
 	if (bRandomizeDirection)
 	{
-		FRotator CurrentRotation = GetActorRotation();
-		CurrentRotation.Yaw = FMath::RandRange(0.0f, 360.0f);
+		FRotator NewRotation = GetActorRotation();
+		NewRotation.Yaw = FMath::RandRange(0.0f, 360.0f);
+		SetActorRotation(NewRotation);
 	}
 	if (OrbitDirection == EOrbitDirection::None)
 	{
@@ -65,11 +71,6 @@ void AFlyingBase::Tick(float DeltaTime)
 			PivotLocation = EPivotLocation::Left;
 		}
 	}
-	Orbit(DeltaTime);
-}
-
-void AFlyingBase::InitializePositioning()
-{
 	float AverageOffset = (MaxTargetOffset - MinTargetOffset) / 2;
 	float Offset = FMath::RandRange(MinTargetOffset, MaxTargetOffset);
 
