@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{e1c0656c-f0d6-42b1-b8dc-a3526481890c}">
+		<property name="assetPath">
+			<value>ESM_One_Shot_Vocal_Roc_Monster_Wing_Flap_and_Shuffle_Dinosaur_Bird_Heavy_Wings_Flutter.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>96</value>
+		</property>
+		<property name="channelCount">
+			<value>1</value>
+		</property>
+		<property name="length">
+			<value>1.2099270833333333</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{79c8242f-fa14-4b1d-b6f9-24e34c9d3084}</destination>
+		</relationship>
+	</object>
+</objects>

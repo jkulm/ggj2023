@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{70650a0a-4ee0-47ad-b1f6-a6250697baac}">
+		<property name="assetPath">
+			<value>ESM_Heavy_Object_Slide_or_Push_Heavy_Metallic_Grinding_Screech_Deep_Junk.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>192</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>2.0717812499999999</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{79c8242f-fa14-4b1d-b6f9-24e34c9d3084}</destination>
+		</relationship>
+	</object>
+</objects>

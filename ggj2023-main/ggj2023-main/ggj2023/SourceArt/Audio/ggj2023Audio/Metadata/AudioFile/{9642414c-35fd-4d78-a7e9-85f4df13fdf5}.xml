@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{9642414c-35fd-4d78-a7e9-85f4df13fdf5}">
+		<property name="assetPath">
+			<value>Bird_Flap_4.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>0.46340136054421771</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{79c8242f-fa14-4b1d-b6f9-24e34c9d3084}</destination>
+		</relationship>
+	</object>
+</objects>

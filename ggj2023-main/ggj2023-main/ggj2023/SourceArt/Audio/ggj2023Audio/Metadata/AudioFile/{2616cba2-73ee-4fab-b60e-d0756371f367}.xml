@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{2616cba2-73ee-4fab-b60e-d0756371f367}">
+		<property name="assetPath">
+			<value>ESM_One_Shot_Vocal_Roc_Monster_Wing_Flap_Dinosaur_Bird_Light_Steady_Flapping.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>96</value>
+		</property>
+		<property name="channelCount">
+			<value>1</value>
+		</property>
+		<property name="length">
+			<value>2.2086458333333332</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{79c8242f-fa14-4b1d-b6f9-24e34c9d3084}</destination>
+		</relationship>
+	</object>
+</objects>
