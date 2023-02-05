@@ -22,7 +22,7 @@ enum class EPivotLocation : uint8
 	Left UMETA(DisplayName = "Left")
 };
 
-UCLASS()
+UCLASS(BlueprintType)
 class GGJ2023_API AFlyingBase : public ACharacter
 {
 	GENERATED_BODY()
