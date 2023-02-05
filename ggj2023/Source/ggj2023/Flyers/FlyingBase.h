@@ -68,11 +68,19 @@ protected:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Movement")
 	float Speed;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Movement")
+	float RPM;
+
 	/** Always use a positive value here for normal banking */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Movement")
 	float BankAngle;
 
 	bool bPositioningInitialized = false;
+
+	// Store upvector to avoid recalculating it every frame
+	FVector UpVector;
+
+	float AnglePerSec;
 
 public:
 	// Called every frame

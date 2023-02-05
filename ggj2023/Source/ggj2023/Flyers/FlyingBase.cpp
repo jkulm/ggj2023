@@ -15,6 +15,7 @@ AFlyingBase::AFlyingBase()
 	OrbitDirection = EOrbitDirection::None;
 	PivotLocation = EPivotLocation::None;
 	BankAngle = 20.0f;
+	RPM = 0.1;
 }
 
 void AFlyingBase::BeginPlay()
@@ -71,6 +72,8 @@ void AFlyingBase::InitializePositioning()
 			PivotLocation = EPivotLocation::Left;
 		}
 	}
+	AnglePerSec = (RPM / 60.f) * 360.f; // in degrees
+	UpVector = FVector::UpVector;
 	float AverageOffset = (MaxTargetOffset - MinTargetOffset) / 2;
 	float Offset = FMath::RandRange(MinTargetOffset, MaxTargetOffset);
 
@@ -83,11 +86,11 @@ void AFlyingBase::InitializePositioning()
 	FVector ActorRotatedVector = ActorForwardVector;
 	if (PivotLocation == EPivotLocation::Right)
 	{
-		ActorRotatedVector = ActorForwardVector.RotateAngleAxis(90.0f, FVector::UpVector);
+		ActorRotatedVector = ActorForwardVector.RotateAngleAxis(90.0f, UpVector);
 	}
 	else
 	{
-		ActorRotatedVector = ActorForwardVector.RotateAngleAxis(-90.0f, FVector::UpVector);
+		ActorRotatedVector = ActorForwardVector.RotateAngleAxis(-90.0f, UpVector);
 	}
 	PivotPoint = ActorLocation + (ActorRotatedVector * Offset);
 	Radius = (PivotPoint - ActorLocation).Size();
@@ -96,9 +99,8 @@ void AFlyingBase::InitializePositioning()
 
 void AFlyingBase::Orbit(float DeltaTime)
 {
-	float RPM = 0.1;
 	FVector radius = GetActorLocation() - PivotPoint; // vector from PivotPoint to current location
-	float angle = (RPM / 60.f) * 360.f * DeltaTime;	  // the angle to rotate by, in degrees
+	float angle = AnglePerSec * DeltaTime;			  // the angle to rotate by, in degrees
 
 	if (OrbitDirection == EOrbitDirection::CounterClockwise)
 	{
@@ -118,17 +120,17 @@ void AFlyingBase::Orbit(float DeltaTime)
 	FRotator BankedRotation;
 	if (OrbitDirection == EOrbitDirection::Clockwise)
 	{
-		FVector Forward = (PivotPoint - GetActorLocation()).GetSafeNormal();
-		TidalLock = FVector::CrossProduct(Forward, FVector::UpVector).GetSafeNormal();
+		FVector Forward = (PivotPoint - GetActorLocation());
+		TidalLock = FVector::CrossProduct(Forward, UpVector);
 		BankedRotation = TidalLock.Rotation();
-		BankedRotation.Roll = 10.0f;
+		BankedRotation.Roll = BankAngle;
 	}
 	else
 	{
-		FVector Forward = (PivotPoint - GetActorLocation()).GetSafeNormal();
-		TidalLock = FVector::CrossProduct(FVector::UpVector, Forward).GetSafeNormal();
+		FVector Forward = (PivotPoint - GetActorLocation());
+		TidalLock = FVector::CrossProduct(UpVector, Forward);
 		BankedRotation = TidalLock.Rotation();
-		BankedRotation.Roll = -10.0f;
+		BankedRotation.Roll = BankAngle * -1;
 	}
 	SetActorRotation(BankedRotation);
 }
